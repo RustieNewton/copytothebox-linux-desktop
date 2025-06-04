@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=CopyToTheBox
+Comment=Sync files to your private server
+Exec=python3 $HOME/.copytothebox/main.py
+Icon=$HOME/.copytothebox/assets/icon.png
+Terminal=false
+Type=Application
+Categories=Utility;

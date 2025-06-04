@@ -1,0 +1,16 @@
+[Unit]
+Description=CopyToTheBox Periodic Sync Timer
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/.copytothebox
+Environment=HOME=%h
+ExecStart=/usr/bin/python3 -u -m rsync.sync_timer
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
+

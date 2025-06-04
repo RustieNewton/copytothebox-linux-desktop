@@ -1,0 +1,9 @@
+Install CopyToTheBox app for Linux desktop or laptop
+
+1 In a file browser/ navigator find your downloads (Desktop or Downloads)
+2 Right click the install.sh and click "run as a program"
+3 After the install, you will get a notice, click ok to the notice
+4 Check your icon tray (bottom right or bottom row usually) for a CopyTotheBox icon
+5 Delete install.sh and README.md if you downloaded those
+6 You can uninstall by opening the app
+7 You will find a log for the uninstall report on your desktop

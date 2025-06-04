@@ -1,0 +1,13 @@
+[Unit]
+Description=CopyToTheBox sync on user GUI startup
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 -m rsync.runner
+WorkingDirectory=%h/.copytothebox
+Restart=no
+
+[Install]
+WantedBy=default.target
+
