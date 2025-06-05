@@ -70,7 +70,7 @@ echo "YOU CAN DELETE THIS FILE WITHOUT HARMING ANYTHING"
   zenity --info --text="CopyToTheBox app has been installed."
 
   # Delete this script (running from /tmp)
-  echo " PRETENDING TO remov install script."
-  #rm -- "$0"
+  echo "removing install script."
+  rm -- "$0"
 
 } >> "$LOG_FILE" 2>&1

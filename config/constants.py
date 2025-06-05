@@ -2,11 +2,14 @@ import os
 import tempfile
 
 # urls
+#AUTH_URL = "https:newton.house/cgi/register.php"   DEV ONLY
 AUTH_URL = "http://brainbox/cgi/register.php"
 
-# dir
-#APP_DIR = os.path.expanduser("~/.copytothebox") # created in install.sh
-APP_DIR = os.path.expanduser("~/BRAINBOX/copytothebox-linux-desktop") # FOR DEVELOPMENT ONLY
+# app dir
+#APP_DIR = os.path.expanduser("~/BRAINBOX/copytothebox-linux-desktop") #  FOR DEVELOPMENT ONLY
+APP_DIR = os.path.expanduser("~/.copytothebox") # created in install.sh
+
+# dirs
 CONFIG_DIR = os.path.join(APP_DIR, "config")
 LOG_DIR = os.path.join(APP_DIR, "logs")
 

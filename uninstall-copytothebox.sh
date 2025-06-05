@@ -3,7 +3,8 @@ LOG_FILE="$HOME/Desktop/copytothebox-uninstall.log" #nb desktop and not hidden
 SYSTEMD_DIR="$HOME/.config/systemd/user"
 DESKTOP_DIR="$HOME/.local/share/applications/"
 PROJECT_DIR="$HOME/.copytothebox"
-echo "YOU CAN DELETE THIS FILE WITHOUT HARMING ANYTHING"
+
+echo "YOU CAN DELETE THIS FILE WITHOUT HARMING ANYTHING" >> "$LOG_FILE"
 
 {
 	# Kill the app
@@ -17,7 +18,7 @@ echo "YOU CAN DELETE THIS FILE WITHOUT HARMING ANYTHING"
 	sleep 2
 
 	# desktop files
-	rm  $APPLICATION_DIR/copytothebox.desktop 
+	rm  $DESKTOP_DIR/copytothebox.desktop 
 
 	# systemd service files
 	systemctl --user disable copytothebox-login.service

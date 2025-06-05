@@ -1,12 +1,8 @@
 # OVERVIEW
-A user-friendly Linux desktop app in Python that is a wrapper for rsync. It pushes new and updated files from the users documents, downloads, photos, and videos to their personal home server, called Brainbox.  
-It runs in the background with a timer script that periodically calls a runner to sync.  It also establishes a systemd service that runs on user login. 
-
-# detail
-The user signs in at first with their server credentials, and on success the app receives auth token and public domain name from the server.
-On system start the systemd service starts a timer.
-The user has a UI to update settings which the timer and runner will read when running.
-The user can also disable sync altogether, read logs, see last sync. and other wonderful and useful things.
+A user-friendly Linux desktop app in Python that is a wrapper for rsync. 
+It pushes new and updated files from the users documents, downloads, photos, and videos to their personal microserver, called Brainbox.  
+It runs in the background with a timer script that periodically calls a runner to sync. Started by systemd.
+It also establishes a systemd service that runs on user login. 
 
 # repo structure
 copytothebox-linux-desktop/
@@ -47,16 +43,32 @@ copytothebox-linux-desktop/
 ├── copytothebox-latest.zip       # zip file containing the app less dev and repo files
 └── requirements.txt
 
-# PREPARE ZIP file 
+# PREPARE the repo
   cd copytothebox-linux-desktop
+  manuallly change app root in config/settings.json # IMPORTANT !!
+  manually change register url   IMPORTANT !!
   find . -type d -name "__pycache__" -exec rm -r {} +
-  #echo "" > logs/copytothebox.log
-  #rm config/auth.json # create on registration
+  echo "" > logs/copytothebox.log
+  rm config/auth.json # create on registration
   echo "{\"enabled\": true, \"lastRun\": false, \"syncInterval\": 1800}" > config/settings.json
   rm copytothebox-latest.zip
-  zip -r copytothebox-latest.zip * -x install.sh nextSTEPS.md README.md  # README.md is for devs
+  zip -r copytothebox-latest.zip * -x install.sh nextSTEPS.md README.md ".git/\*"  # README.md is for devs
+  update git pushing new files to main branch
+    git status  # view changes, opt
+    git add .  # stage the changes, can be by indiv file if req
+    git commit -m "describe change here"  # have a meaningful message it helps to find the changes
+    git push   # 
+
+  manually upload the zip file to the repo as a release
+    git tag v1.0.1  # new tag for release
+    git push origin v1.0.1
+    Go to GitHub → Releases → Draft a new release with tag v1.1.0 and upload the updated zip.
 
 # how does it work
+The user signs in at first with their server credentials, and on success the app receives auth token and public domain name from the server.
+On system start the systemd service starts a timer.
+The user has a UI to update settings which the timer and runner will read when running.
+The user can also disable sync altogether, read logs, see last sync. and other wonderful and useful things.
 on first opening the user supplies their brainbox username and password, 
 the following auth details are saved to 
 config/auth.json
@@ -75,17 +87,9 @@ timer interval is in config/settings.json
     "lastRun": "2025-06-03T12:01:35.204559",
     "syncInterval": 1800
 }
-expansion
-It automatically runs on wake and shutdown, and restart (shutdown, then start)
-running sync at the user-level on:
-  Wake from suspend/hibernate
-  Before shutdown
-  is definitely doable using user-level systemd services.
 
-
-## OVERVIEW
+# OVERVIEW
 Goal: A user-friendly Linux desktop app that:
-
 Use a Python background timer script (sync_timer.py) that:
 
   Runs continuously in the background

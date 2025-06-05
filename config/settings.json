@@ -1,5 +1,1 @@
-{
-    "enabled": true,
-    "lastRun": false,
-    "syncInterval": 600
-}
+{"enabled": true, "lastRun": false, "syncInterval": 1800}
